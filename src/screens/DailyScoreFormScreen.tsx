@@ -1,7 +1,4 @@
 import React, { useLayoutEffect, useState } from "react";
-import { useMutate } from "@api";
-import DropDownSelect from "@components/DropDownSelect";
-import { DurationSelectOptions } from "@consts";
 
 import {
   CheckIcon,
@@ -12,13 +9,18 @@ import {
   WarningOutlineIcon,
 } from "native-base";
 
-import DisplayScoreScreen from "./DisplayScoreScreen";
-import calculateScore from "@utils/calculateScore";
-
-import { locals } from "@consts";
+import theme from "@shared/theme";
 import { FormContainer, SpacingContainer } from "@shared/styles";
 
-import theme from "@shared/theme";
+import DropDownSelect from "@components/DropDownSelect";
+import DisplayScoreScreen from "@screens/DisplayScoreScreen";
+
+import { RequestStatus, useMutate } from "@api";
+
+import { locals, DurationSelectOptions } from "@consts";
+
+import calculateScore from "@utils/calculateScore";
+
 
 export const DailyScoreFormScreen = () => {
   const [durationInBed, setDurationInBed] = useState<string>("");
@@ -38,8 +40,8 @@ export const DailyScoreFormScreen = () => {
 
   const isValid = () => {
     return (
-      durationInBed !== "" &&
-      durationAsleep !== "" &&
+      !!durationInBed &&
+      !!durationAsleep &&
       Number(durationInBed) > Number(durationAsleep)
     );
   };
@@ -51,10 +53,15 @@ export const DailyScoreFormScreen = () => {
     );
   };
 
-  useLayoutEffect(() => {
-    if (status === "initial" || status === "loading") return;
+  const validate = () => {
+    return !durationAsleep || !durationInBed || isValid();
+  };
 
-    if (status === "success") {
+  useLayoutEffect(() => {
+    if (status === RequestStatus.initial || status === RequestStatus.loading)
+      return;
+
+    if (status === RequestStatus.success) {
       setScore(response?.score);
     } else {
       setErrorMessage(error);
@@ -78,13 +85,8 @@ export const DailyScoreFormScreen = () => {
           }}
           title={locals["form.duration_in_bed.title"]}
           placeholder={locals["form.duration_in_bed.placeholder"]}
-          validate={(value: string) => {
-            const isValid =
-              !value ||
-              !durationAsleep ||
-              Number(value) > Number(durationAsleep);
-
-            if (isValid) return null;
+          validate={() => {
+            if (validate()) return null;
             else return locals["form.duration_in_bed.error"];
           }}
         />
@@ -98,11 +100,8 @@ export const DailyScoreFormScreen = () => {
           }}
           title={locals["form.duration_asleep.title"]}
           placeholder={locals["form.duration_asleep.placeholder"]}
-          validate={(value: string) => {
-            const isValid =
-              !value || !durationInBed || Number(value) < Number(durationInBed);
-
-            if (isValid) return null;
+          validate={() => {
+            if (validate()) return null;
             else return locals["form.duration_asleep.error"];
           }}
         />
@@ -116,7 +115,7 @@ export const DailyScoreFormScreen = () => {
 
       <SpacingContainer mTop={70}>
         <Button
-          isLoading={status === "loading"}
+          isLoading={status === RequestStatus.loading}
           endIcon={<CheckIcon size="xs" />}
           isDisabled={!isValid()}
           colorScheme={theme.colors.primary.green}

@@ -1,9 +1,10 @@
 import React from "react";
 import { Button, Heading, Progress, Text, VStack } from "native-base";
+
+import theme from "@shared/theme";
 import { FormContainer, SpacingContainer } from "@shared/styles";
 
 import { locals } from "@consts";
-import theme from "@shared/theme";
 
 export interface DailyScoreScreenPropsType {
   reset: () => void;
@@ -21,7 +22,7 @@ export const DisplayScoreScreen = ({
 
         <VStack space={7}>
           <Text fontSize="5xl" alignSelf={"center"}>
-            {Math.round(score)} %
+            {score} %
           </Text>
           <Progress size="2xl" value={Math.round(score)} />
         </VStack>

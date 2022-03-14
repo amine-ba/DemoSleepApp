@@ -6,6 +6,8 @@ import {
   WarningOutlineIcon,
 } from "native-base";
 
+import { locals } from "@consts";
+
 export interface DropDownSelect {
   items: SelectItem[];
   value: string;
@@ -47,7 +49,7 @@ export const DropDownSelect = ({
       </Select>
 
       <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
-        {errorMessage || "Some thing went wrong, please try again."}
+        {errorMessage || locals["dropdown.select.default.error"]}
       </FormControl.ErrorMessage>
     </FormControl>
   );

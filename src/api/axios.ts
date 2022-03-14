@@ -2,9 +2,18 @@ export const mockedAxios = {
   post: (_url: string, payload: any) => saveDailyScore(payload),
 };
 
+interface saveDailyScoreResponseType {
+  data: {
+    status: string;
+    score: Number;
+  };
+}
+
 let MockApiFailed = true;
 
-const saveDailyScore = async (score: number): Promise<any> => {
+const saveDailyScore = async (
+  score: number
+): Promise<saveDailyScoreResponseType> => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       MockApiFailed = !MockApiFailed;
@@ -15,7 +24,7 @@ const saveDailyScore = async (score: number): Promise<any> => {
 
       resolve({
         data: {
-          status: "success",
+          status: "saved",
           score,
         },
       });

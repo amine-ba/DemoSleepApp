@@ -14,5 +14,7 @@ export default {
   "screen.score.title": "Your Score is",
 
   "form.reset": "Reset",
-  "form.submit": "Sumbmit"
+  "form.submit": "Sumbmit",
+
+  "dropdown.select.default.error": "Some thing went wrong, please try again."
 };
