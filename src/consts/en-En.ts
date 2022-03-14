@@ -1,4 +1,4 @@
-export const locals = {
+export default {
   scoreForm: {
     title: "How Well You Slept ?",
     durationInBed: {
@@ -21,5 +21,3 @@ export const locals = {
     error: "Some thing went wrong, please try again.",
   },
 };
-
-export default locals;

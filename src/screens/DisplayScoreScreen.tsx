@@ -4,7 +4,7 @@ import { Button, Heading, Progress, Text, VStack } from "native-base";
 import theme from "@shared/theme";
 import { FormContainer, SpacingContainer } from "@shared/styles";
 
-import { locals } from "@consts";
+import { TextContent } from "@consts";
 
 export const DisplayScoreScreen = ({
   score,
@@ -13,7 +13,7 @@ export const DisplayScoreScreen = ({
   return (
     <FormContainer safeAreaTop>
       <VStack space={12}>
-        <Heading>{locals.scoreScreen.title}</Heading>
+        <Heading>{TextContent.scoreScreen.title}</Heading>
 
         <VStack space={7}>
           <Text fontSize="5xl" alignSelf={"center"}>
@@ -29,7 +29,7 @@ export const DisplayScoreScreen = ({
             variant="subtle"
             onPress={reset}
           >
-            {locals.reset}
+            {TextContent.reset}
           </Button>
         </SpacingContainer>
       </VStack>

@@ -6,7 +6,7 @@ import {
   WarningOutlineIcon,
 } from "native-base";
 
-import { locals } from "@consts";
+import { TextContent } from "@consts";
 
 
 export const DropDownSelect = ({
@@ -41,7 +41,7 @@ export const DropDownSelect = ({
       </Select>
 
       <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
-        {errorMessage || locals.default.error}
+        {errorMessage || TextContent.default.error}
       </FormControl.ErrorMessage>
     </FormControl>
   );

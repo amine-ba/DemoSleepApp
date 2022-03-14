@@ -17,7 +17,7 @@ import DisplayScoreScreen from "@screens/DisplayScoreScreen";
 
 import { RequestStatus, useMutate } from "@api";
 
-import { locals, DurationSelectOptions } from "@consts";
+import { TextContent, DurationSelectOptions } from "@consts";
 
 import calculateScore from "@utils/calculateScore";
 
@@ -71,10 +71,11 @@ export const DailyScoreFormScreen = () => {
 
   return (
     <FormContainer safeAreaTop>
-      <SpacingContainer mBottom={80}>
-        <Heading>{locals.scoreForm.title}</Heading>
+      <SpacingContainer mBottom={50}>
+        <Heading>{TextContent.scoreForm.title}</Heading>
       </SpacingContainer>
-      <VStack space={8}>
+
+      <SpacingContainer mVertical={30}>
         <DropDownSelect
           value={durationInBed}
           items={DurationSelectOptions}
@@ -82,37 +83,39 @@ export const DailyScoreFormScreen = () => {
             if (errorMessage) setErrorMessage(null);
             setDurationInBed(value);
           }}
-          title={locals.scoreForm.durationInBed.title}
-          placeholder={locals.scoreForm.durationInBed.placeholder}
+          title={TextContent.scoreForm.durationInBed.title}
+          placeholder={TextContent.scoreForm.durationInBed.placeholder}
           validate={() => {
             if (validate()) return null;
-            else return locals.scoreForm.durationInBed.error;
+            else return TextContent.scoreForm.durationInBed.error;
           }}
         />
+      </SpacingContainer>
 
-        <DropDownSelect
-          value={durationAsleep}
-          items={DurationSelectOptions}
-          onValueChange={(value: string) => {
-            if (errorMessage) setErrorMessage(null);
-            setDurationAsleep(value);
-          }}
-          title={locals.scoreForm.durationAsleep.title}
-          placeholder={locals.scoreForm.durationAsleep.placeholder}
-          validate={() => {
-            if (validate()) return null;
-            else return locals.scoreForm.durationAsleep.error;
-          }}
-        />
+      <DropDownSelect
+        value={durationAsleep}
+        items={DurationSelectOptions}
+        onValueChange={(value: string) => {
+          if (errorMessage) setErrorMessage(null);
+          setDurationAsleep(value);
+        }}
+        title={TextContent.scoreForm.durationAsleep.title}
+        placeholder={TextContent.scoreForm.durationAsleep.placeholder}
+        validate={() => {
+          if (validate()) return null;
+          else return TextContent.scoreForm.durationAsleep.error;
+        }}
+      />
 
+      <SpacingContainer mVertical={20}>
         <FormControl isInvalid={!!errorMessage}>
           <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
             {errorMessage}
           </FormControl.ErrorMessage>
         </FormControl>
-      </VStack>
+      </SpacingContainer>
 
-      <SpacingContainer mTop={70}>
+      <SpacingContainer mTop={60}>
         <Button
           isLoading={status === RequestStatus.loading}
           endIcon={<CheckIcon size="xs" />}
@@ -120,7 +123,7 @@ export const DailyScoreFormScreen = () => {
           colorScheme={theme.colors.primary.green}
           onPress={onSubmit}
         >
-          {locals.submit}
+          {TextContent.submit}
         </Button>
       </SpacingContainer>
     </FormContainer>
