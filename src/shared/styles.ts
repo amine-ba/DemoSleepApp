@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 
-import { Box, Button, View } from "native-base";
+import { Box, View } from "native-base";
 
 export const FlexContainer = styled(Box)``;
 
@@ -11,13 +10,13 @@ export const FormContainer = styled(FlexContainer)`
 `;
 
 export interface SpacingContainerProps {
-  mLeft?: React.CSSProperties["margin"];
-  mRight?: React.CSSProperties["margin"];
-  mTop?: React.CSSProperties["margin"];
-  mBottom?: React.CSSProperties["margin"];
-  mVertical?: React.CSSProperties["margin"];
-  mHorizontal?: React.CSSProperties["margin"];
-  mAll?: React.CSSProperties["margin"];
+  mLeft?: number;
+  mRight?: number;
+  mTop?: number;
+  mBottom?: number;
+  mVertical?: number;
+  mHorizontal?: number;
+  mAll?: number;
 }
 
 const generateMargins = (props: SpacingContainerProps) => {

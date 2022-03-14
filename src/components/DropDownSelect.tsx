@@ -8,14 +8,6 @@ import {
 
 import { locals } from "@consts";
 
-export interface DropDownSelect {
-  items: SelectItem[];
-  value: string;
-  onValueChange: (value: string) => void;
-  title?: string;
-  placeholder?: string;
-  validate?: (value: string) => string | null;
-}
 
 export const DropDownSelect = ({
   items,
@@ -24,7 +16,7 @@ export const DropDownSelect = ({
   title,
   placeholder,
   validate,
-}: DropDownSelect) => {
+}: DropDownSelectProps) => {
   const errorMessage = validate?.(value);
 
   return (
@@ -49,10 +41,19 @@ export const DropDownSelect = ({
       </Select>
 
       <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
-        {errorMessage || locals["dropdown.select.default.error"]}
+        {errorMessage || locals.default.error}
       </FormControl.ErrorMessage>
     </FormControl>
   );
 };
+
+export interface DropDownSelectProps {
+  items: SelectItem[];
+  value: string;
+  onValueChange: (value: string) => void;
+  title?: string;
+  placeholder?: string;
+  validate?: (value: string) => string | null;
+}
 
 export default DropDownSelect;

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useCallback, useLayoutEffect, useState } from "react";
 
 import {
   CheckIcon,
@@ -21,7 +21,6 @@ import { locals, DurationSelectOptions } from "@consts";
 
 import calculateScore from "@utils/calculateScore";
 
-
 export const DailyScoreFormScreen = () => {
   const [durationInBed, setDurationInBed] = useState<string>("");
   const [durationAsleep, setDurationAsleep] = useState<string>("");
@@ -38,7 +37,7 @@ export const DailyScoreFormScreen = () => {
     setErrorMessage(null);
   };
 
-  const isValid = () => {
+  const canSubmit = () => {
     return (
       !!durationInBed &&
       !!durationAsleep &&
@@ -53,9 +52,9 @@ export const DailyScoreFormScreen = () => {
     );
   };
 
-  const validate = () => {
-    return !durationAsleep || !durationInBed || isValid();
-  };
+  const validate = useCallback(() => {
+    return !durationAsleep || !durationInBed || canSubmit();
+  }, [durationAsleep, durationInBed]);
 
   useLayoutEffect(() => {
     if (status === RequestStatus.initial || status === RequestStatus.loading)
@@ -73,7 +72,7 @@ export const DailyScoreFormScreen = () => {
   return (
     <FormContainer safeAreaTop>
       <SpacingContainer mBottom={80}>
-        <Heading>{locals["form.score.title"]}</Heading>
+        <Heading>{locals.scoreForm.title}</Heading>
       </SpacingContainer>
       <VStack space={8}>
         <DropDownSelect
@@ -83,11 +82,11 @@ export const DailyScoreFormScreen = () => {
             if (errorMessage) setErrorMessage(null);
             setDurationInBed(value);
           }}
-          title={locals["form.duration_in_bed.title"]}
-          placeholder={locals["form.duration_in_bed.placeholder"]}
+          title={locals.scoreForm.durationInBed.title}
+          placeholder={locals.scoreForm.durationInBed.placeholder}
           validate={() => {
             if (validate()) return null;
-            else return locals["form.duration_in_bed.error"];
+            else return locals.scoreForm.durationInBed.error;
           }}
         />
 
@@ -98,11 +97,11 @@ export const DailyScoreFormScreen = () => {
             if (errorMessage) setErrorMessage(null);
             setDurationAsleep(value);
           }}
-          title={locals["form.duration_asleep.title"]}
-          placeholder={locals["form.duration_asleep.placeholder"]}
+          title={locals.scoreForm.durationAsleep.title}
+          placeholder={locals.scoreForm.durationAsleep.placeholder}
           validate={() => {
             if (validate()) return null;
-            else return locals["form.duration_asleep.error"];
+            else return locals.scoreForm.durationAsleep.error;
           }}
         />
 
@@ -117,11 +116,11 @@ export const DailyScoreFormScreen = () => {
         <Button
           isLoading={status === RequestStatus.loading}
           endIcon={<CheckIcon size="xs" />}
-          isDisabled={!isValid()}
+          isDisabled={!canSubmit()}
           colorScheme={theme.colors.primary.green}
           onPress={onSubmit}
         >
-          {locals["form.submit"]}
+          {locals.submit}
         </Button>
       </SpacingContainer>
     </FormContainer>

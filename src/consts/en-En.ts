@@ -1,20 +1,25 @@
-export default {
-  "form.score.title": "How Well You Slept ?",
-
-  "form.duration_in_bed.title": "How long did you stay in bed ?",
-  "form.duration_in_bed.placeholder": "Duration in bed",
-  "form.duration_in_bed.error":
-    "duration in bed should be grater than Duration asleep",
-
-  "form.duration_asleep.title": "How long did you sleep ?",
-  "form.duration_asleep.placeholder": "Duration asleep",
-  "form.duration_asleep.error":
-    "Duration asleep should be grater than duration in bed",
-
-  "screen.score.title": "Your Score is",
-
-  "form.reset": "Reset",
-  "form.submit": "Sumbmit",
-
-  "dropdown.select.default.error": "Some thing went wrong, please try again."
+export const locals = {
+  scoreForm: {
+    title: "How Well You Slept ?",
+    durationInBed: {
+      title: "How long did you stay in bed ?",
+      placeholder: "Duration in bed",
+      error: "Duration in bed should be grater than Duration asleep",
+    },
+    durationAsleep: {
+      title: "How long did you sleep ?",
+      placeholder: "Duration asleep",
+      error: "Duration asleep should be grater than duration in bed",
+    },
+  },
+  scoreScreen: {
+    title: "Your Score is",
+  },
+  reset: "Reset",
+  submit: "Sumbmit",
+  default: {
+    error: "Some thing went wrong, please try again.",
+  },
 };
+
+export default locals;

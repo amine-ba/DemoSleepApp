@@ -2,10 +2,10 @@ export const mockedAxios = {
   post: (_url: string, payload: any) => saveDailyScore(payload),
 };
 
-interface saveDailyScoreResponseType {
+export interface saveDailyScoreResponseType {
   data: {
     status: string;
-    score: Number;
+    score: number;
   };
 }
 

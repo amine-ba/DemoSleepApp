@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { mockedAxios } from "@api/axios";
+import { mockedAxios, saveDailyScoreResponseType } from "@api/axios";
 
 export enum RequestStatus {
   initial = "initial",
@@ -8,8 +8,10 @@ export enum RequestStatus {
   error = "error",
 }
 
+declare type responseType = saveDailyScoreResponseType
+
 export const useMutate = () => {
-  const [response, setResponse] = useState<any>();
+  const [response, setResponse] = useState<responseType | null>(null);
   const [error, setError] = useState();
   const [status, setStatus] = useState<RequestStatus>(RequestStatus.initial);
 
@@ -18,7 +20,7 @@ export const useMutate = () => {
     setError(undefined);
     try {
       const result = await mockedAxios["post"](url, payload);
-      setResponse(result?.data);
+      setResponse(result);
       setStatus(RequestStatus.success);
     } catch (error: any) {
       setError(error);
@@ -28,7 +30,7 @@ export const useMutate = () => {
 
   return {
     mutate,
-    response,
+    response: response?.data,
     status,
     error,
   };

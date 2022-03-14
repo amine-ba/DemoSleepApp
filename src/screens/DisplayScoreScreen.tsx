@@ -6,25 +6,20 @@ import { FormContainer, SpacingContainer } from "@shared/styles";
 
 import { locals } from "@consts";
 
-export interface DailyScoreScreenPropsType {
-  reset: () => void;
-  score: number;
-}
-
 export const DisplayScoreScreen = ({
   score,
   reset,
-}: DailyScoreScreenPropsType) => {
+}: DailyScoreScreenProps) => {
   return (
     <FormContainer safeAreaTop>
       <VStack space={12}>
-        <Heading>{locals["screen.score.title"]}</Heading>
+        <Heading>{locals.scoreScreen.title}</Heading>
 
         <VStack space={7}>
           <Text fontSize="5xl" alignSelf={"center"}>
             {score} %
           </Text>
-          <Progress size="2xl" value={Math.round(score)} />
+          <Progress size="2xl" value={score} />
         </VStack>
 
         <SpacingContainer mTop={20}>
@@ -34,12 +29,17 @@ export const DisplayScoreScreen = ({
             variant="subtle"
             onPress={reset}
           >
-            {locals["form.reset"]}
+            {locals.reset}
           </Button>
         </SpacingContainer>
       </VStack>
     </FormContainer>
   );
 };
+
+export interface DailyScoreScreenProps {
+  reset: () => void;
+  score: number;
+}
 
 export default DisplayScoreScreen;
