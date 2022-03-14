@@ -19,6 +19,6 @@ const saveDailyScore = async (score: number): Promise<any> => {
           score,
         },
       });
-    }, 1000);
+    }, 500);
   });
 };

@@ -1,7 +1,5 @@
 import React from "react";
 import {
-  Box,
-  Center,
   CheckIcon,
   FormControl,
   Select,
@@ -25,7 +23,6 @@ export const DropDownSelect = ({
   placeholder,
   validate,
 }: DropDownSelect) => {
-
   const errorMessage = validate?.(value);
 
   return (

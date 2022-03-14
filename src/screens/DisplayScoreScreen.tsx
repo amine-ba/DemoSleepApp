@@ -1,5 +1,9 @@
 import React from "react";
-import { Box, Button, Heading, Progress, Text, VStack } from "native-base";
+import { Button, Heading, Progress, Text, VStack } from "native-base";
+import { FormContainer, SpacingContainer } from "@shared/styles";
+
+import { locals } from "@consts";
+import theme from "@shared/theme";
 
 export interface DailyScoreScreenPropsType {
   reset: () => void;
@@ -11,32 +15,29 @@ export const DisplayScoreScreen = ({
   reset,
 }: DailyScoreScreenPropsType) => {
   return (
-    <Box safeAreaTop w={"80%"} h={"60%"}>
+    <FormContainer safeAreaTop>
       <VStack space={12}>
-        <Heading mb="2" size="md">
-          Your Score is
-        </Heading>
+        <Heading>{locals["screen.score.title"]}</Heading>
 
         <VStack space={7}>
           <Text fontSize="5xl" alignSelf={"center"}>
             {Math.round(score)} %
           </Text>
-          <Progress size="2xl" mb={4} value={Math.round(score)} />
+          <Progress size="2xl" value={Math.round(score)} />
         </VStack>
 
-        <Box>
+        <SpacingContainer mTop={20}>
           <Button
-            mt="3"
-            colorScheme={"red"}
-            color={"red.300"}
+            colorScheme={theme.colors.primary.red}
+            color={theme.colors.primary.red300}
             variant="subtle"
             onPress={reset}
           >
-            Reset
+            {locals["form.reset"]}
           </Button>
-        </Box>
+        </SpacingContainer>
       </VStack>
-    </Box>
+    </FormContainer>
   );
 };
 

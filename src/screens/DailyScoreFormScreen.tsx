@@ -1,19 +1,24 @@
 import React, { useLayoutEffect, useState } from "react";
-import { useMutate } from "../api";
-import DropDownSelect from "../components/DropDownSelect";
-import { DurationSelectOptions } from "../consts";
+import { useMutate } from "@api";
+import DropDownSelect from "@components/DropDownSelect";
+import { DurationSelectOptions } from "@consts";
 
 import {
   CheckIcon,
-  Box,
   Button,
   VStack,
   Heading,
   FormControl,
   WarningOutlineIcon,
 } from "native-base";
+
 import DisplayScoreScreen from "./DisplayScoreScreen";
-import calculateScore from "../utils/calculateScore";
+import calculateScore from "@utils/calculateScore";
+
+import { locals } from "@consts";
+import { FormContainer, SpacingContainer } from "@shared/styles";
+
+import theme from "@shared/theme";
 
 export const DailyScoreFormScreen = () => {
   const [durationInBed, setDurationInBed] = useState<string>("");
@@ -32,7 +37,11 @@ export const DailyScoreFormScreen = () => {
   };
 
   const isValid = () => {
-    return durationInBed !== "" && durationAsleep !== "";
+    return (
+      durationInBed !== "" &&
+      durationAsleep !== "" &&
+      Number(durationInBed) > Number(durationAsleep)
+    );
   };
 
   const onSubmit = () => {
@@ -43,7 +52,7 @@ export const DailyScoreFormScreen = () => {
   };
 
   useLayoutEffect(() => {
-    if (status === "loading" || status === "initial") return;
+    if (status === "initial" || status === "loading") return;
 
     if (status === "success") {
       setScore(response?.score);
@@ -55,75 +64,68 @@ export const DailyScoreFormScreen = () => {
   if (score) return <DisplayScoreScreen reset={reset} score={score} />;
 
   return (
-    <Box safeAreaTop w={"80%"} h={"60%"}>
-      <VStack space={12}>
-        <Heading mb="2" size="md">
-          How Well You Slept ?
-        </Heading>
+    <FormContainer safeAreaTop>
+      <SpacingContainer mBottom={80}>
+        <Heading>{locals["form.score.title"]}</Heading>
+      </SpacingContainer>
+      <VStack space={8}>
+        <DropDownSelect
+          value={durationInBed}
+          items={DurationSelectOptions}
+          onValueChange={(value: string) => {
+            if (errorMessage) setErrorMessage(null);
+            setDurationInBed(value);
+          }}
+          title={locals["form.duration_in_bed.title"]}
+          placeholder={locals["form.duration_in_bed.placeholder"]}
+          validate={(value: string) => {
+            const isValid =
+              !value ||
+              !durationAsleep ||
+              Number(value) > Number(durationAsleep);
 
-        <VStack space={7}>
-          <DropDownSelect
-            value={durationInBed}
-            items={DurationSelectOptions}
-            onValueChange={(value: string) => {
-              if(errorMessage) setErrorMessage(null);
-              setDurationInBed(value);
-            }}
-            title="How long did you stay in bed ?"
-            placeholder="Duration in bed"
-            validate={(value: string) => {
-              if (
-                value &&
-                durationAsleep &&
-                Number(value) <= Number(durationAsleep)
-              )
-                return "duration in bed should be grater than Duration asleep";
-              return null;
-            }}
-          />
-          <DropDownSelect
-            value={durationAsleep}
-            items={DurationSelectOptions}
-            onValueChange={(value: string) => {
-              if(errorMessage) setErrorMessage(null);
-              setDurationAsleep(value);
-            }}
-            title="How long did you sleep ?"
-            placeholder="Duration asleep"
-            validate={(value: string) => {
-              if (
-                value &&
-                durationInBed &&
-                Number(value) >= Number(durationInBed)
-              )
-                return "Duration asleep should be grater than duration in bed";
-              return null;
-            }}
-          />
+            if (isValid) return null;
+            else return locals["form.duration_in_bed.error"];
+          }}
+        />
 
-          <FormControl isInvalid={!!errorMessage}>
-            <FormControl.ErrorMessage
-              leftIcon={<WarningOutlineIcon size="xs" />}
-            >
-              {errorMessage}
-            </FormControl.ErrorMessage>
-          </FormControl>
-        </VStack>
+        <DropDownSelect
+          value={durationAsleep}
+          items={DurationSelectOptions}
+          onValueChange={(value: string) => {
+            if (errorMessage) setErrorMessage(null);
+            setDurationAsleep(value);
+          }}
+          title={locals["form.duration_asleep.title"]}
+          placeholder={locals["form.duration_asleep.placeholder"]}
+          validate={(value: string) => {
+            const isValid =
+              !value || !durationInBed || Number(value) < Number(durationInBed);
 
-        <Box>
-          <Button
-            isLoading={status === "loading"}
-            mt={8}
-            endIcon={<CheckIcon size="3" />}
-            isDisabled={!isValid()}
-            colorScheme={"green"}
-            onPress={onSubmit}
-          >
-            Submit
-          </Button>
-        </Box>
+            if (isValid) return null;
+            else return locals["form.duration_asleep.error"];
+          }}
+        />
+
+        <FormControl isInvalid={!!errorMessage}>
+          <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+            {errorMessage}
+          </FormControl.ErrorMessage>
+        </FormControl>
       </VStack>
-    </Box>
+
+      <SpacingContainer mTop={70}>
+        <Button
+          isLoading={status === "loading"}
+          endIcon={<CheckIcon size="xs" />}
+          isDisabled={!isValid()}
+          colorScheme={theme.colors.primary.green}
+          onPress={onSubmit}
+        >
+          {locals["form.submit"]}
+        </Button>
+      </SpacingContainer>
+    </FormContainer>
   );
 };
 
