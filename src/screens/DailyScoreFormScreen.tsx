@@ -17,23 +17,24 @@ import DisplayScoreScreen from "@screens/DisplayScoreScreen";
 import { RequestStatus, useMutate } from "@api";
 
 import { TextContent, DurationSelectOptions } from "@consts";
-
-import calculateScore from "@utils/calculateScore";
+import { useScore } from "hooks/useScore";
 
 export const DailyScoreFormScreen = () => {
   const [durationInBed, setDurationInBed] = useState<string>("");
   const [durationAsleep, setDurationAsleep] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string | null>();
 
-  const [score, setScore] = useState<number | null>();
+  const [displayScore, setDisplayScore] = useState<boolean>(false);
 
-  const { mutate, response, status, error } = useMutate();
+  const score = useScore({ durationInBed, durationAsleep });
+
+  const { mutate, status, error } = useMutate();
 
   const reset = () => {
     setDurationInBed("");
     setDurationAsleep("");
-    setScore(null);
     setErrorMessage(null);
+    setDisplayScore(false);
   };
 
   const canSubmit = () => {
@@ -45,10 +46,7 @@ export const DailyScoreFormScreen = () => {
   };
 
   const onSubmit = () => {
-    mutate(
-      "localhost:8080/save/score",
-      calculateScore(durationInBed, durationAsleep)
-    );
+    mutate("localhost:8080/scores", score);
   };
 
   const validate = useCallback(() => {
@@ -60,13 +58,14 @@ export const DailyScoreFormScreen = () => {
       return;
 
     if (status === RequestStatus.success) {
-      setScore(response?.score);
+      setDisplayScore(true);
     } else {
       setErrorMessage(error);
     }
   }, [status]);
 
-  if (score) return <DisplayScoreScreen reset={reset} score={score} />;
+  if (displayScore && score)
+    return <DisplayScoreScreen reset={reset} score={score} />;
 
   return (
     <FormContainer safeAreaTop>
@@ -116,7 +115,7 @@ export const DailyScoreFormScreen = () => {
 
       <SpacingContainer mTop={60}>
         <Button
-          testID='score-form-submit-button'
+          testID="score-form-submit-button"
           isLoading={status === RequestStatus.loading}
           endIcon={<CheckIcon size="xs" />}
           isDisabled={!canSubmit()}
