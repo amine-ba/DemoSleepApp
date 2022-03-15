@@ -116,6 +116,7 @@ export const DailyScoreFormScreen = () => {
 
       <SpacingContainer mTop={60}>
         <Button
+          testID='score-form-submit-button'
           isLoading={status === RequestStatus.loading}
           endIcon={<CheckIcon size="xs" />}
           isDisabled={!canSubmit()}

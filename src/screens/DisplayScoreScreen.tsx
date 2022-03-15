@@ -13,13 +13,14 @@ export const DisplayScoreScreen = ({ score, reset }: DailyScoreScreenProps) => {
         <Heading>{TextContent.scoreScreen.title}</Heading>
       </SpacingContainer>
 
-      <Text fontSize="5xl" alignSelf={"center"}>
+      <Text fontSize="5xl" alignSelf={"center"} testID="display.score">
         {score} %
       </Text>
       <Progress size="2xl" value={score} />
 
       <SpacingContainer mTop={50}>
         <Button
+          testID="reset.score.botton"
           colorScheme={theme.colors.primary.red}
           color={theme.colors.primary.red300}
           variant="subtle"

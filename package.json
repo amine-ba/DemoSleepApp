@@ -15,11 +15,14 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "test": "jest"
   },
   "dependencies": {
     "expo": "~42.0.0",
     "expo-status-bar": "~1.0.4",
+    "jest": "^27.5.1",
+    "jest-expo": "^42.0.1",
     "native-base": "3.3.7",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -31,14 +34,28 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@testing-library/jest-native": "^4.0.4",
+    "@testing-library/react-native": "^9.0.0",
+    "@types/jest": "^27.4.1",
     "@types/react": "~16.9.35",
     "@types/react-native": "~0.63.2",
+    "@types/react-test-renderer": "^17.0.1",
     "@types/styled-components": "^5.1.24",
     "babel-plugin-module-resolver": "^4.1.0",
+    "react-test-renderer": "^16.14.0",
     "typescript": "~4.0.0"
   },
   "bugs": {
     "url": "https://github.com/GeekyAnts/nativebase-templates/issues"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ]
   },
   "homepage": "https://github.com/GeekyAnts/nativebase-templates#readme",
   "author": "Aditya Jamuar",

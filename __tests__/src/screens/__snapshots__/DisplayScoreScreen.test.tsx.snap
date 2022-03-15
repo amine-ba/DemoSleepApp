@@ -1,0 +1,381 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` <App /> Component   Should Successfully Rendred  1`] = `
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
+  style={
+    Array [
+      Object {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    className="sc-bdvvtL sc-gsDKAQ  giHPxp"
+    dataSet={Object {}}
+    style={Object {}}
+  >
+    <View
+      className="sc-dkPtRN bZylFl"
+      dataSet={Object {}}
+      mVertical={50}
+      style={Object {}}
+    >
+      <Text
+        dataSet={Object {}}
+        style={
+          Object {
+            "backgroundColor": undefined,
+            "color": "#404040",
+            "fontFamily": undefined,
+            "fontSize": null,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "letterSpacing": 0,
+            "lineHeight": 30,
+            "textDecorationLine": undefined,
+          }
+        }
+      >
+        Your Score is
+      </Text>
+    </View>
+    <Text
+      dataSet={Object {}}
+      style={
+        Object {
+          "alignSelf": "center",
+          "backgroundColor": undefined,
+          "color": "#1f2937",
+          "fontFamily": undefined,
+          "fontSize": 48,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "letterSpacing": 0,
+          "lineHeight": 72,
+          "textDecorationLine": undefined,
+        }
+      }
+      testID="display.score"
+    >
+      1
+       %
+    </Text>
+    <View
+      accessibilityRole="progressbar"
+      accessibilityValue={
+        Object {
+          "max": 100,
+          "min": 0,
+          "now": 1,
+        }
+      }
+      accessible={true}
+      colorScheme="primary"
+      dataSet={Object {}}
+      isIndeterminate={false}
+      style={
+        Object {
+          "backgroundColor": "#a5f3fc",
+          "borderRadius": 9999,
+          "height": 24,
+          "overflow": "hidden",
+        }
+      }
+    >
+      <View
+        dataSet={Object {}}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#0891b2",
+            "display": "flex",
+            "elevation": 1,
+            "height": "100%",
+            "justifyContent": "center",
+            "shadowColor": "#000000",
+            "shadowOffset": Object {
+              "height": 1,
+              "width": 0,
+            },
+            "shadowOpacity": 0.18,
+            "shadowRadius": 1,
+            "width": "1%",
+          }
+        }
+      />
+    </View>
+    <View
+      className="sc-dkPtRN ioVHrU"
+      dataSet={Object {}}
+      mTop={50}
+      style={Object {}}
+    >
+      <View
+        _text={
+          Object {
+            "color": "darkText",
+          }
+        }
+        accessibilityRole="button"
+        accessible={true}
+        colorScheme="red"
+        dataSet={Object {}}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onHoverIn={[Function]}
+        onHoverOut={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#fee2e2",
+            "borderRadius": 4,
+            "color": "#fca5a5",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "paddingBottom": 8,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 8,
+          }
+        }
+        testID="reset.score.botton"
+      >
+        <View
+          dataSet={Object {}}
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View
+            dataSet={Object {}}
+            style={Object {}}
+          >
+            <Text
+              dataSet={Object {}}
+              style={
+                Object {
+                  "backgroundColor": undefined,
+                  "color": "#ef4444",
+                  "fontFamily": undefined,
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "500",
+                  "letterSpacing": 0,
+                  "lineHeight": 21,
+                  "textDecorationLine": undefined,
+                }
+              }
+            >
+              Reset
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</RNCSafeAreaProvider>
+`;
+
+exports[` <App /> Component   should successfully rendred  1`] = `
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
+  style={
+    Array [
+      Object {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    className="sc-bdvvtL sc-gsDKAQ  giHPxp"
+    dataSet={Object {}}
+    style={Object {}}
+  >
+    <View
+      className="sc-dkPtRN bZylFl"
+      dataSet={Object {}}
+      mVertical={50}
+      style={Object {}}
+    >
+      <Text
+        dataSet={Object {}}
+        style={
+          Object {
+            "backgroundColor": undefined,
+            "color": "#404040",
+            "fontFamily": undefined,
+            "fontSize": null,
+            "fontStyle": "normal",
+            "fontWeight": "700",
+            "letterSpacing": 0,
+            "lineHeight": 30,
+            "textDecorationLine": undefined,
+          }
+        }
+      >
+        Your Score is
+      </Text>
+    </View>
+    <Text
+      dataSet={Object {}}
+      style={
+        Object {
+          "alignSelf": "center",
+          "backgroundColor": undefined,
+          "color": "#1f2937",
+          "fontFamily": undefined,
+          "fontSize": 48,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+          "letterSpacing": 0,
+          "lineHeight": 72,
+          "textDecorationLine": undefined,
+        }
+      }
+      testID="display.score"
+    >
+      1
+       %
+    </Text>
+    <View
+      accessibilityRole="progressbar"
+      accessibilityValue={
+        Object {
+          "max": 100,
+          "min": 0,
+          "now": 1,
+        }
+      }
+      accessible={true}
+      colorScheme="primary"
+      dataSet={Object {}}
+      isIndeterminate={false}
+      style={
+        Object {
+          "backgroundColor": "#a5f3fc",
+          "borderRadius": 9999,
+          "height": 24,
+          "overflow": "hidden",
+        }
+      }
+    >
+      <View
+        dataSet={Object {}}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#0891b2",
+            "display": "flex",
+            "elevation": 1,
+            "height": "100%",
+            "justifyContent": "center",
+            "shadowColor": "#000000",
+            "shadowOffset": Object {
+              "height": 1,
+              "width": 0,
+            },
+            "shadowOpacity": 0.18,
+            "shadowRadius": 1,
+            "width": "1%",
+          }
+        }
+      />
+    </View>
+    <View
+      className="sc-dkPtRN ioVHrU"
+      dataSet={Object {}}
+      mTop={50}
+      style={Object {}}
+    >
+      <View
+        _text={
+          Object {
+            "color": "darkText",
+          }
+        }
+        accessibilityRole="button"
+        accessible={true}
+        colorScheme="red"
+        dataSet={Object {}}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onHoverIn={[Function]}
+        onHoverOut={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#fee2e2",
+            "borderRadius": 4,
+            "color": "#fca5a5",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "paddingBottom": 8,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 8,
+          }
+        }
+        testID="reset.score.botton"
+      >
+        <View
+          dataSet={Object {}}
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View
+            dataSet={Object {}}
+            style={Object {}}
+          >
+            <Text
+              dataSet={Object {}}
+              style={
+                Object {
+                  "backgroundColor": undefined,
+                  "color": "#ef4444",
+                  "fontFamily": undefined,
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "500",
+                  "letterSpacing": 0,
+                  "lineHeight": 21,
+                  "textDecorationLine": undefined,
+                }
+              }
+            >
+              Reset
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</RNCSafeAreaProvider>
+`;
