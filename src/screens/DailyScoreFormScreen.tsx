@@ -48,20 +48,16 @@ export const DailyScoreFormScreen = () => {
     setDisplayScore(false);
   };
 
-  const canSubmit = () => {
-    return (
-      !!durationInBed &&
-      !!durationAsleep &&
-      Number(durationInBed) > Number(durationAsleep)
-    );
-  };
-
   const onSubmit = () => {
     mutate("localhost:8080/scores", score);
   };
 
   const validate = useCallback(() => {
-    return !durationAsleep || !durationInBed || canSubmit();
+    return (
+      !durationAsleep ||
+      !durationInBed ||
+      Number(durationInBed) > Number(durationAsleep)
+    );
   }, [durationAsleep, durationInBed]);
 
   const onDurationInBedChange = useCallback((value: string) => {
@@ -121,10 +117,10 @@ export const DailyScoreFormScreen = () => {
 
       <SpacingContainer mTop={60}>
         <Button
-          testID="save-score-button"
+          testID="save.score.button"
           isLoading={status === RequestStatus.loading}
           endIcon={<CheckIcon size="xs" />}
-          isDisabled={!canSubmit()}
+          isDisabled={!validate() || !score}
           colorScheme={theme.colors.primary.green}
           onPress={onSubmit}
         >
