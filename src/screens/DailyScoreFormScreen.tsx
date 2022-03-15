@@ -14,9 +14,10 @@ import { FormContainer, SpacingContainer } from "@shared/styles";
 import DropDownSelect from "@components/DropDownSelect";
 import DisplayScoreScreen from "@screens/DisplayScoreScreen";
 
+import { RequestStatus, useMutate } from "hooks/useMutate";
+
 import { TextContent, DurationSelectOptions } from "@consts";
 import { useScore } from "hooks/useScore";
-import { RequestStatus, useMutate } from "hooks/useMutate";
 
 export const DailyScoreFormScreen = () => {
   const [durationInBed, setDurationInBed] = useState<string>("");
@@ -28,6 +29,17 @@ export const DailyScoreFormScreen = () => {
   const score = useScore({ durationInBed, durationAsleep });
 
   const { mutate, status, error } = useMutate();
+
+  useLayoutEffect(() => {
+    if (status === RequestStatus.initial || status === RequestStatus.loading)
+      return;
+
+    if (status === RequestStatus.success) {
+      setDisplayScore(true);
+    } else {
+      setErrorMessage(error);
+    }
+  }, [status]);
 
   const reset = () => {
     setDurationInBed("");
@@ -52,16 +64,15 @@ export const DailyScoreFormScreen = () => {
     return !durationAsleep || !durationInBed || canSubmit();
   }, [durationAsleep, durationInBed]);
 
-  useLayoutEffect(() => {
-    if (status === RequestStatus.initial || status === RequestStatus.loading)
-      return;
+  const onDurationInBedChange = useCallback((value: string) => {
+    if (errorMessage) setErrorMessage(null);
+    setDurationInBed(value);
+  }, []);
 
-    if (status === RequestStatus.success) {
-      setDisplayScore(true);
-    } else {
-      setErrorMessage(error);
-    }
-  }, [status]);
+  const onDurationAsleepChange = useCallback((value: string) => {
+    if (errorMessage) setErrorMessage(null);
+    setDurationAsleep(value);
+  }, []);
 
   if (displayScore && score)
     return <DisplayScoreScreen reset={reset} score={score} />;
@@ -74,12 +85,10 @@ export const DailyScoreFormScreen = () => {
 
       <SpacingContainer mVertical={30}>
         <DropDownSelect
+          testID="durationInBedSelect"
           value={durationInBed}
           items={DurationSelectOptions}
-          onValueChange={(value: string) => {
-            if (errorMessage) setErrorMessage(null);
-            setDurationInBed(value);
-          }}
+          onValueChange={onDurationInBedChange}
           title={TextContent.scoreForm.durationInBed.title}
           placeholder={TextContent.scoreForm.durationInBed.placeholder}
           validate={() => {
@@ -90,12 +99,10 @@ export const DailyScoreFormScreen = () => {
       </SpacingContainer>
 
       <DropDownSelect
+        testID="durationAsleepSelect"
         value={durationAsleep}
         items={DurationSelectOptions}
-        onValueChange={(value: string) => {
-          if (errorMessage) setErrorMessage(null);
-          setDurationAsleep(value);
-        }}
+        onValueChange={onDurationAsleepChange}
         title={TextContent.scoreForm.durationAsleep.title}
         placeholder={TextContent.scoreForm.durationAsleep.placeholder}
         validate={() => {
