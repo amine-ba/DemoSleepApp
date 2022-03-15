@@ -1,21 +1,16 @@
 import React from "react";
-import {
-  CheckIcon,
-  FormControl,
-  Select,
-  WarningOutlineIcon,
-} from "native-base";
+import { FormControl, WarningOutlineIcon } from "native-base";
 
 import { TextContent } from "@consts";
-
+import SelectInpu from "./SelectInput";
 
 export const DropDownSelect = ({
   items,
   value,
   onValueChange,
   title,
-  placeholder,
   validate,
+  placeholder,
 }: DropDownSelectProps) => {
   const errorMessage = validate?.(value);
 
@@ -23,22 +18,12 @@ export const DropDownSelect = ({
     <FormControl isInvalid={!!errorMessage}>
       <FormControl.Label mb="3">{title}</FormControl.Label>
 
-      <Select
-        selectedValue={value}
-        minWidth="200"
-        accessibilityLabel={placeholder}
-        placeholder={placeholder}
-        _selectedItem={{
-          bg: "teal.600",
-          endIcon: <CheckIcon size="5" />,
-        }}
-        mt={1}
+      <SelectInpu
+        items={items}
         onValueChange={onValueChange}
-      >
-        {items.map(({ label, value }) => (
-          <Select.Item key={label} label={label} value={value} />
-        ))}
-      </Select>
+        value={value}
+        placeholder={placeholder}
+      />
 
       <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
         {errorMessage || TextContent.default.error}
