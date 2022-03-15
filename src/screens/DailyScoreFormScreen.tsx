@@ -14,10 +14,9 @@ import { FormContainer, SpacingContainer } from "@shared/styles";
 import DropDownSelect from "@components/DropDownSelect";
 import DisplayScoreScreen from "@screens/DisplayScoreScreen";
 
-import { RequestStatus, useMutate } from "@api";
-
 import { TextContent, DurationSelectOptions } from "@consts";
 import { useScore } from "hooks/useScore";
+import { RequestStatus, useMutate } from "hooks/useMutate";
 
 export const DailyScoreFormScreen = () => {
   const [durationInBed, setDurationInBed] = useState<string>("");
@@ -115,7 +114,7 @@ export const DailyScoreFormScreen = () => {
 
       <SpacingContainer mTop={60}>
         <Button
-          testID="score-form-submit-button"
+          testID="save-score-button"
           isLoading={status === RequestStatus.loading}
           endIcon={<CheckIcon size="xs" />}
           isDisabled={!canSubmit()}

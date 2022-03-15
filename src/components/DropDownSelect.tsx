@@ -11,11 +11,12 @@ export const DropDownSelect = ({
   title,
   validate,
   placeholder,
+  testID,
 }: DropDownSelectProps) => {
   const errorMessage = validate?.(value);
 
   return (
-    <FormControl isInvalid={!!errorMessage}>
+    <FormControl testID={testID} isInvalid={!!errorMessage}>
       <FormControl.Label mb="3">{title}</FormControl.Label>
 
       <SelectInpu
@@ -39,6 +40,7 @@ export interface DropDownSelectProps {
   title?: string;
   placeholder?: string;
   validate?: (value: string) => string | null;
+  testID?: string;
 }
 
 export default DropDownSelect;

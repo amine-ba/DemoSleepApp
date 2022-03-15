@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` <DisplayScoreScreen /> Component   Should Successfully Rendred  1`] = `
+exports[` <DailyScoreFormScreen /> Component   Should Successfully Rendred  1`] = `
 <RNCSafeAreaProvider
   onInsetsChange={[Function]}
   style={
@@ -18,9 +18,9 @@ exports[` <DisplayScoreScreen /> Component   Should Successfully Rendred  1`] = 
     style={Object {}}
   >
     <View
-      className="sc-dkPtRN bZylFl"
+      className="sc-dkPtRN ipVPo"
       dataSet={Object {}}
-      mVertical={50}
+      mBottom={50}
       style={Object {}}
     >
       <Text
@@ -39,78 +39,35 @@ exports[` <DisplayScoreScreen /> Component   Should Successfully Rendred  1`] = 
           }
         }
       >
-        Your Score is
+        How Well You Slept ?
       </Text>
     </View>
-    <Text
-      dataSet={Object {}}
-      style={
-        Object {
-          "alignSelf": "center",
-          "backgroundColor": undefined,
-          "color": "#1f2937",
-          "fontFamily": undefined,
-          "fontSize": 48,
-          "fontStyle": "normal",
-          "fontWeight": "400",
-          "letterSpacing": 0,
-          "lineHeight": 72,
-          "textDecorationLine": undefined,
-        }
-      }
-      testID="display.score"
-    >
-      1
-       %
-    </Text>
     <View
-      accessibilityRole="progressbar"
-      accessibilityValue={
-        Object {
-          "max": 100,
-          "min": 0,
-          "now": 1,
-        }
-      }
-      accessible={true}
-      colorScheme="primary"
+      className="sc-dkPtRN gJaBSN"
       dataSet={Object {}}
-      isIndeterminate={false}
-      style={
-        Object {
-          "backgroundColor": "#a5f3fc",
-          "borderRadius": 9999,
-          "height": 24,
-          "overflow": "hidden",
-        }
-      }
+      mVertical={30}
+      style={Object {}}
+    />
+    <View
+      className="sc-dkPtRN hPqa-Dd"
+      dataSet={Object {}}
+      mVertical={20}
+      style={Object {}}
     >
       <View
         dataSet={Object {}}
+        isInvalid={false}
         style={
           Object {
-            "alignItems": "center",
-            "backgroundColor": "#0891b2",
-            "display": "flex",
-            "elevation": 1,
-            "height": "100%",
-            "justifyContent": "center",
-            "shadowColor": "#000000",
-            "shadowOffset": Object {
-              "height": 1,
-              "width": 0,
-            },
-            "shadowOpacity": 0.18,
-            "shadowRadius": 1,
-            "width": "1%",
+            "width": "100%",
           }
         }
       />
     </View>
     <View
-      className="sc-dkPtRN ioVHrU"
+      className="sc-dkPtRN ceYxvD"
       dataSet={Object {}}
-      mTop={50}
+      mTop={60}
       style={Object {}}
     >
       <View
@@ -121,7 +78,7 @@ exports[` <DisplayScoreScreen /> Component   Should Successfully Rendred  1`] = 
         }
         accessibilityRole="button"
         accessible={true}
-        colorScheme="red"
+        colorScheme="green"
         dataSet={Object {}}
         focusable={true}
         onBlur={[Function]}
@@ -138,18 +95,18 @@ exports[` <DisplayScoreScreen /> Component   Should Successfully Rendred  1`] = 
         style={
           Object {
             "alignItems": "center",
-            "backgroundColor": "#fee2e2",
+            "backgroundColor": "#d4d4d4",
             "borderRadius": 4,
-            "color": "#fca5a5",
             "flexDirection": "row",
             "justifyContent": "center",
+            "opacity": 0.5,
             "paddingBottom": 8,
             "paddingLeft": 12,
             "paddingRight": 12,
             "paddingTop": 8,
           }
         }
-        testID="reset.score.botton"
+        testID="save-score-button"
       >
         <View
           dataSet={Object {}}
@@ -169,7 +126,7 @@ exports[` <DisplayScoreScreen /> Component   Should Successfully Rendred  1`] = 
               style={
                 Object {
                   "backgroundColor": undefined,
-                  "color": "#ef4444",
+                  "color": "#000000",
                   "fontFamily": undefined,
                   "fontSize": 14,
                   "fontStyle": "normal",
@@ -180,9 +137,89 @@ exports[` <DisplayScoreScreen /> Component   Should Successfully Rendred  1`] = 
                 }
               }
             >
-              Reset
+              Sumbmit
             </Text>
           </View>
+          <View
+            dataSet={Object {}}
+            style={
+              Object {
+                "width": 8,
+              }
+            }
+          />
+          <RNSVGSvgView
+            accessibilityRole="image"
+            align="xMidYMid"
+            bbHeight={16}
+            bbWidth={16}
+            color={4278190080}
+            dataSet={Object {}}
+            focusable={false}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            stroke=""
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Object {
+                  "color": "#000000",
+                  "fontSize": 14,
+                  "fontWeight": "500",
+                  "height": 16,
+                  "width": 16,
+                },
+                Object {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
+              ]
+            }
+            tintColor={4278190080}
+            vbHeight={14}
+            vbWidth={14}
+          >
+            <RNSVGGroup
+              font={
+                Object {
+                  "fontSize": 14,
+                  "fontWeight": "500",
+                }
+              }
+              propList={
+                Array [
+                  "stroke",
+                ]
+              }
+              stroke={null}
+            >
+              <RNSVGGroup>
+                <RNSVGGroup
+                  fill={
+                    Array [
+                      2,
+                    ]
+                  }
+                  propList={
+                    Array [
+                      "fill",
+                      "stroke",
+                    ]
+                  }
+                  stroke={null}
+                >
+                  <RNSVGPath
+                    d="M5.5 11.9993304 14 3.49933039 12.5 2 5.5 8.99933039 1.5 4.9968652 0 6.49933039z"
+                  />
+                </RNSVGGroup>
+              </RNSVGGroup>
+            </RNSVGGroup>
+          </RNSVGSvgView>
         </View>
       </View>
     </View>

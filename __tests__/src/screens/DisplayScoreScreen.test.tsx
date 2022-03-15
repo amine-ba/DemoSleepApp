@@ -20,14 +20,7 @@ const TestComponent = (props: DailyScoreScreenProps) => (
   </NativeBaseProvider>
 );
 
-describe(" <App /> Component ", () => {
-  it(" should successfully rendred ", () => {
-    const appTree = render(
-      <TestComponent score={1} reset={Mockrest} />
-    ).toJSON();
-    expect(appTree).toMatchSnapshot();
-  });
-
+describe(" <DisplayScoreScreen /> Component ", () => {
   it(" Should Successfully Rendred ", () => {
     const json = render(<TestComponent score={1} reset={Mockrest} />).toJSON();
 
@@ -35,7 +28,7 @@ describe(" <App /> Component ", () => {
   });
 
   it(" Should Display the exact Score ", async () => {
-    const { findByTestId, debug } = render(
+    const { findByTestId } = render(
       <TestComponent score={1} reset={Mockrest} />
     );
 
