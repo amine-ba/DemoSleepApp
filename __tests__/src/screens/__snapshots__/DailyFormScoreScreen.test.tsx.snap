@@ -562,7 +562,7 @@ exports[` <DailyScoreFormScreen /> Component   Should Successfully Rendred  1`] 
             "paddingTop": 8,
           }
         }
-        testID="save.score.botton"
+        testID="save.score.button"
       >
         <View
           dataSet={Object {}}
