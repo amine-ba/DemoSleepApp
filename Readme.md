@@ -1,4 +1,4 @@
-# SleepIo
+# Demo
 
 Patient tracking app for sufferers of different types of sleep disorders such as Insomnia
 
