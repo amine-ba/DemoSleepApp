@@ -1,6 +1,6 @@
 # SleepIo
 
-SleepIo is a patient tracking app for sufferers of different types of sleep disorders such as Insomnia
+Patient tracking app for sufferers of different types of sleep disorders such as Insomnia
 
 ### Quick Start (Development)
 
